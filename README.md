@@ -8,10 +8,10 @@ MAWD Start-up Challenge(2026년 11월 14일부터 15일) 10팀 마이크의 작�
 
 | 폴더 | 내용 |
 |---|---|
-| `docs/기획서.md` | 문제, 고객, 흐름, 콘텐츠 점수, 규정, 오픈소스 |
-| `prototype/index.html` | 화면 목업 10장. 브라우저로 열면 된다. `?only=3`처럼 붙이면 한 장만 보인다 |
-| `prototype/mockups/` | 목업을 이미지로 내보낸 PNG 10장 |
-| `scoring/` | Articul8 Bivia로 글에 점수를 매기는 스크립트와 결과 |
+| `docs/기획서.md` | 목적, 쉬운 콘텐츠와 다음 전략, 고객, 흐름, 콘텐츠 점수, 규정, 오픈소스 |
+| `prototype/index.html` | 화면 목업 11장. 브라우저로 열면 된다. `?only=3`처럼 붙이면 한 장만 보인다 |
+| `prototype/mockups/` | 목업을 이미지로 내보낸 PNG 11장 |
+| `scoring/` | Articul8 Bivia로 글에 점수를 매기는 스크립트와 결과, 조회수 관찰값 |
 | `api/` | 후원사 API(Liner, VAPI, 스티비, Articul8, Readray) 호출 안내와 키 확인 스크립트 |
 
 ## 자료의 출처
