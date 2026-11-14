@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 콘텐츠 보좌관</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--ink:#1F2430;--paper:#FBFAF7;--line:#D9D5CC;--mute:#6B6F7A;--accent:#43358A;--amber:#B7791F;--mark:#F3E3A6;--soft:#F1EEE6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E9E6DE;color:var(--ink);font-family:Pretendard,'Noto Sans KR',sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.serif{font-family:'Noto Serif KR',serif;letter-spacing:-.03em}
+.sheet{width:1440px;height:900px;background:var(--paper);margin:28px auto;position:relative;overflow:hidden;border:1px solid var(--line)}
+body.only .sheet{margin:0;border:0;display:none}
+body.only .sheet.on{display:block}
+body.only{background:var(--paper)}
+.tag{font-size:12px;letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+.mark{background:linear-gradient(transparent 58%,var(--mark) 58%)}
+.note{font-size:12px;color:var(--mute)}
+h1.big{font-size:74px;line-height:1.14;font-weight:900}
+h2.head{font-size:40px;line-height:1.2;font-weight:900}
+h3{font-size:17px;font-weight:700}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-size:13.5px}
+th{font-size:11.5px;letter-spacing:.08em;color:var(--mute);font-weight:600;border-bottom:1.5px solid var(--ink)}
+.pad{padding:56px 64px}
+.foot{position:absolute;left:64px;right:64px;bottom:26px;display:flex;justify-content:space-between;font-size:12px;color:var(--mute)}
+/* 표지 */
+.cover{display:grid;grid-template-columns:680px 1fr;height:100%}
+.cover .l{padding:72px 0 0 64px}
+.cover .r{background:url(assets/hero.png) center/cover}
+.flow{display:flex;margin-top:54px;border-top:1.5px solid var(--ink)}
+.flow div{flex:1;padding:12px 6px 0 0;font-size:13px;position:relative}
+.flow div:before{content:"";position:absolute;top:-5px;left:0;width:8px;height:8px;background:var(--ink);border-radius:50%}
+.flow div.a:before{background:var(--accent)}
+.flow b{display:block;font-size:11px;color:var(--mute);font-weight:600}
+/* 앱 틀 */
+.app{display:grid;grid-template-columns:208px 1fr;height:100%}
+.side{border-right:1px solid var(--line);padding:30px 0;background:#fff}
+.side .logo{padding:0 24px 26px;font-weight:900;font-size:22px}
+.side .logo small{display:block;font:500 11px Pretendard;color:var(--mute);letter-spacing:0;margin-top:2px}
+.side a{display:block;padding:10px 24px;font-size:14.5px;color:var(--ink);text-decoration:none;border-left:3px solid transparent}
+.side a.on{border-left-color:var(--accent);font-weight:700;background:var(--soft)}
+.side .who{position:absolute;bottom:26px;left:24px;font-size:12px;color:var(--mute);width:170px}
+.main{padding:34px 44px;overflow:hidden}
+.main .top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1.5px solid var(--ink);padding-bottom:14px;margin-bottom:22px}
+.main .top h2{font-size:30px;font-weight:900}
+.main .top p{font-size:13.5px;color:var(--mute)}
+.btn{display:inline-block;padding:9px 16px;font-size:13.5px;font-weight:600;border:1.5px solid var(--ink);background:#fff}
+.btn.p{background:var(--ink);color:#fff}
+.cols{display:grid;gap:28px}
+.box{background:#fff;border:1px solid var(--line);padding:18px 20px}
+.badge{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border:1.5px solid var(--ink)}
+.badge.ok{background:var(--accent);border-color:var(--accent);color:#fff}
+.badge.rv{background:#fff;border-color:var(--amber);color:var(--amber)}
+.badge.no{background:var(--ink);color:#fff}
+.bar{height:6px;background:var(--soft);position:relative}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink)}
+.bar.v i{background:var(--accent)}
+.num{font-family:'Noto Serif KR',serif;font-weight:900;font-size:34px;letter-spacing:-.03em;line-height:1}
+.kv{display:grid;grid-template-columns:118px 1fr 52px;gap:10px;align-items:center;font-size:13px;margin-top:8px}
+.card{width:150px;height:188px;position:relative;background:#ddd center/cover;border:1px solid var(--line);flex:none}
+.card b{position:absolute;left:12px;right:12px;top:14px;font:900 17px/1.25 'Noto Serif KR',serif;letter-spacing:-.03em}
+.card span{position:absolute;left:12px;right:12px;top:66px;font-size:10.5px;line-height:1.4}
+.card em{position:absolute;left:12px;top:-1px;font:600 10px Pretendard;font-style:normal;background:var(--ink);color:#fff;padding:1px 6px}
+.q{font-size:13px;padding:7px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 78px 56px;gap:10px;align-items:center}
+.q:last-child{border:0}
+.src{font-size:12px;color:var(--mute);word-break:break-all}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px}
+ul.plain{list-style:none}
+ul.plain li{padding:6px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);border-top:1.5px solid var(--ink);border-left:1px solid var(--line)}
+.cal div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);height:132px;padding:8px 9px;font-size:12px;background:#fff}
+.cal div b{display:block;font-size:13px;margin-bottom:6px}
+.cal div span{display:block;margin-top:4px;padding:2px 6px;border-left:3px solid var(--accent);background:var(--soft);font-size:11.5px}
+.cal div span.w{border-left-color:var(--amber)}
+</style>
+</head>
+<body>
+
+<!-- 1 표지 -->
+<section class="sheet" id="s1"><div class="cover">
+ <div class="l">
+  <div class="tag">AI 콘텐츠 보좌관 · 쉬운 콘텐츠와 다음 전략</div>
+  <h1 class="big serif" style="margin-top:26px">회의록 한 건이<br><span class="mark">여섯 채널</span>이<br>됩니다.</h1>
+  <p style="font-size:18px;margin-top:26px;max-width:540px">의원실이 이미 낸 발언과 법안, 일정을 유권자가 한 번 읽고 이해하는 글로 바꿔 여섯 채널에 맞게 만듭니다. 무엇이 읽혔는지 기록해 다음에 낼 것을 정합니다.</p>
+  <p style="font-size:15px;margin-top:14px;max-width:540px;color:var(--mute)">출처와 위험을 먼저 확인하고 보좌진이 승인한 글만 나갑니다. 여당, 야당, 무소속 어느 의원실에도 같은 기준을 씁니다.</p>
+  <div class="flow" style="width:590px">
+   <div><b>01</b>원자료 넣기</div><div><b>02</b>오늘 낼 것</div><div><b>03</b>초안</div><div class="a"><b>04</b>출처 확인</div><div class="a"><b>05</b>위험 점검</div><div><b>06</b>승인</div><div><b>07</b>발행</div><div><b>08</b>반응 기록</div>
+  </div>
+ </div>
+ <div class="r"></div>
+</div></section>
+
+<!-- 2 오늘 -->
+<section class="sheet" id="s2"><div class="app">
+ <aside class="side"><div class="logo serif">보좌<small>AI 콘텐츠 보좌관</small></div>
+  <a class="on">오늘</a><a>원자료함</a><a>초안 작업대</a><a>검증과 위험 점검</a><a>발행 달력</a><a>반응 기록</a>
+  <div class="who">서울특별시의회 의원실<br>홍보 담당 비서관</div></aside>
+ <div class="main">
+  <div class="top"><div><h2 class="serif">오늘 할 일</h2><p>오늘 처리할 원자료와 초안, 발행 일정을 한눈에 살펴요.</p></div><div><span class="btn">초안 이어 쓰기</span> <span class="btn p">새 원자료 올리기</span></div></div>
+  <div class="cols" style="grid-template-columns:1.25fr 1fr">
+   <div>
+    <h3>서울시의회에서 지금 다루는 소재</h3><p class="note" style="margin-bottom:8px">공개 회의록과 서울시 발표에서 골랐어요. 어느 의원실이든 원자료로 쓸 수 있어요.</p>
+    <div id="agenda"></div>
+   </div>
+   <div>
+    <h3>서울시의회 일정</h3><p class="note" style="margin-bottom:8px">정례회, 행정사무감사, 예산 심사 일정이에요.</p>
+    <div id="sched"></div>
+    <div class="box" style="margin-top:18px"><h3>기다리는 일</h3><ul class="plain" id="pending"></ul></div>
+   </div>
+  </div>
+ </div>
+</div></section>
+
+<!-- 3 초안 작업대 -->
+<section class="sheet" id="s3"><div class="app">
+ <aside class="side"><div class="logo serif">보좌<small>AI 콘텐츠 보좌관</small></div>
+  <a>오늘</a><a>원자료함</a><a class="on">초안 작업대</a><a>검증과 위험 점검</a><a>발행 달력</a><a>반응 기록</a>
+  <div class="who">서울특별시의회 의원실<br>홍보 담당 비서관</div></aside>
+ <div class="main">
+  <div class="top"><div><h2 class="serif">초안 작업대</h2><p>원자료 한 건을 여섯 채널 초안으로 바꾸고 문장을 다듬어요.</p></div><div><span class="btn">초안 저장하기</span> <span class="btn p">검증으로 보내기</span></div></div>
+  <div class="cols" style="grid-template-columns:300px 1fr 330px" id="desk"></div>
+ </div>
+</div></section>
+
+<!-- 4 검증과 위험 점검 -->
+<section class="sheet" id="s4"><div class="app">
+ <aside class="side"><div class="logo serif">보좌<small>AI 콘텐츠 보좌관</small></div>
+  <a>오늘</a><a>원자료함</a><a>초안 작업대</a><a class="on">검증과 위험 점검</a><a>발행 달력</a><a>반응 기록</a>
+  <div class="who">서울특별시의회 의원실<br>홍보 담당 비서관</div></aside>
+ <div class="main">
+  <div class="top"><div><h2 class="serif">검증과 위험 점검</h2><p>실제로 게시된 글을 원자료와 나란히 놓고 같은 질문 여섯 개로 봐요.</p></div><div><span class="btn">출처 확인하기</span> <span class="btn p">판정 남기기</span></div></div>
+  <div class="three" id="verdict" style="gap:22px"></div>
+  <p class="note" style="margin-top:14px">확률과 응답 시간은 Articul8 Bivia 결정 모델에 실제로 보낸 호출의 결과예요. 원자료와 글은 공개된 원문에서 그대로 옮겼어요. 판정은 검토 순서를 정하는 보조 값이고, 발행 결정은 보좌진이 해요.</p>
+ </div>
+</div></section>
+
+<!-- 5 공개 게시물 점수판 -->
+<section class="sheet" id="s5"><div class="pad">
+ <div class="tag">콘텐츠 점수 · 정당 공식 채널 공개 게시물</div>
+ <h2 class="head serif" style="margin-top:10px">여야 공식 게시물에 <span class="mark">같은 질문</span>을 던졌습니다.</h2>
+ <p style="margin-top:10px;max-width:980px;color:var(--mute);font-size:14px" id="postlead"></p>
+ <div style="display:grid;grid-template-columns:270px 1fr;gap:40px;margin-top:18px">
+  <div id="sidesum"></div>
+  <div id="posts" style="max-height:590px;overflow:hidden"></div>
+ </div>
+ <div class="foot"><span>※ 모델 판정이며 사람이 검증한 값이 아니다. 제목만 있는 짧은 게시물에서는 판정이 흔들리거나 답이 없었다. 표본이 작아 정당 전체의 경향으로 읽을 수 없다.</span><span>05</span></div>
+</div></section>
+
+<!-- 6 발행 달력과 반응 -->
+<section class="sheet" id="s6"><div class="app">
+ <aside class="side"><div class="logo serif">보좌<small>AI 콘텐츠 보좌관</small></div>
+  <a>오늘</a><a>원자료함</a><a>초안 작업대</a><a>검증과 위험 점검</a><a class="on">발행 달력</a><a>반응 기록</a>
+  <div class="who">서울특별시의회 의원실<br>홍보 담당 비서관</div></aside>
+ <div class="main">
+  <div class="top"><div><h2 class="serif">발행 달력</h2><p>서울시의회 실제 일정 위에 승인한 콘텐츠를 올려요. 승인 전 글은 달력에 올라가지 않아요.</p></div><div><span class="btn">일정 조정하기</span> <span class="btn p">발행 일정 잡기</span></div></div>
+  <div class="cal" id="cal"></div>
+  <div class="cols" style="grid-template-columns:1fr 1fr 300px;margin-top:24px">
+   <div class="box"><div class="tag">뉴스레터 · 스티비</div><p style="margin-top:10px;font-size:14px">승인한 주간 꼭지를 구독자 주소록으로 예약 발송해요. 실패하면 다시 보내지 않고 알려요.</p></div>
+   <div class="box"><div class="tag">음성 브리핑 · VAPI</div><p style="margin-top:10px;font-size:14px">오늘 낼 것과 검토 대기 건을 전화로 읽어 드려요. 민원 전화는 요약해서 반응 기록에 남겨요.</p></div>
+   <div class="box" style="display:flex;gap:14px;align-items:center"><img src="assets/empty-inbox.png" style="width:86px;height:86px;object-fit:cover"><div><div class="tag">반응 기록</div><p style="margin-top:6px;font-size:13.5px">아직 반응 기록이 없어요. 발행한 콘텐츠가 생기면 여기에 쌓여요.</p></div></div>
+  </div>
+ </div>
+</div></section>
+
+<!-- 7 기획 한 장 -->
+<section class="sheet" id="s7"><div class="pad">
+ <div class="tag">기획 · 고객과 구조</div>
+ <h2 class="head serif" style="margin-top:10px">보좌진 한 명이 하던 <span class="mark">여섯 번의 다시 쓰기</span>를 한 번의 승인으로 줄입니다.</h2>
+ <div class="three" style="margin-top:26px">
+  <div>
+   <h3>누가 쓰나</h3>
+   <table style="margin-top:6px"><tr><th>고객</th><th>막히는 곳</th></tr>
+    <tr><td><b>국회의원실 홍보 비서관</b></td><td>회의록에서 메시지를 뽑고 채널마다 다시 쓴다. 선거법 검토를 감으로 한다.</td></tr>
+    <tr><td><b>기초의원 본인</b></td><td>글 쓸 시간이 없고 사진과 일정이 휴대폰에 흩어져 있다.</td></tr>
+    <tr><td><b>광역의회 정책지원관</b></td><td>정책 용어를 시민 말로 바꾸고 인용 출처를 확인한다.</td></tr></table>
+   <p class="note" style="margin-top:10px" id="market"></p>
+  </div>
+  <div>
+   <h3>후원 도구가 맡는 자리</h3>
+   <table style="margin-top:6px"><tr><th>도구</th><th>단계</th><th>실패하면</th></tr>
+    <tr><td><b>Articul8 Bivia</b></td><td>말투 분류, 공격 수위, 원자료 일치 판정</td><td>답하지 않으면 사람 검토로 넘긴다</td></tr>
+    <tr><td><b>Liner 검색</b></td><td>주장 문장의 출처 찾기</td><td>출처 없음으로 표시하고 보류한다</td></tr>
+    <tr><td><b>스티비</b></td><td>주간 뉴스레터 예약 발송</td><td>다시 보내지 않고 알린다</td></tr>
+    <tr><td><b>VAPI</b></td><td>아침 음성 브리핑, 민원 전화 요약</td><td>문자로 대체한다</td></tr></table>
+   <p class="note" style="margin-top:10px">※ Bivia, VAPI, Liner는 키를 발급해 호출을 확인했다. Liner는 크레딧 반영 전이고 스티비는 요금제 반영 전이다.</p>
+  </div>
+  <div>
+   <h3>하지 않는 일</h3>
+   <ul class="plain" style="margin-top:6px"><li>상대 후보나 정당을 비방하는 문구를 만들지 않는다</li><li>실존 인물의 얼굴과 음성을 합성하지 않는다</li><li>원자료에 없는 사실, 수치, 인용을 채우지 않는다</li><li>사람 승인 없이 발행하지 않는다</li><li>한 의원실 자료를 다른 의원실에 쓰지 않는다</li><li>법적 결론을 확정하지 않는다</li></ul>
+  </div>
+ </div>
+ <div class="three" style="margin-top:26px">
+  <div><h3>시장의 크기</h3><div style="display:flex;gap:30px;margin-top:10px"><div><div class="num">300명</div><p class="note">국회의원</p></div><div><div class="num">3,968명</div><p class="note">지방의원</p></div></div><p class="note" style="margin-top:8px" id="market2"></p></div>
+  <div><h3>서울에서 먼저</h3><p style="font-size:13.5px;margin-top:8px" id="seoulwhy"></p></div>
+  <div><h3>해커톤에서 실제로 도는 것</h3><ul class="plain" style="margin-top:6px"><li>원자료 한 건에서 여섯 채널 초안</li><li>Bivia 판정 여섯 질문과 확률 표시</li><li>공개 게시물 점수판</li></ul></div>
+ </div>
+ <div class="foot"><span>※ 요금은 의원실 파일럿에서 지불 의사를 확인한 뒤 정한다. 지금 표본은 0이다.</span><span>07</span></div>
+</div></section>
+
+<!-- 8 규정과 근거 -->
+<section class="sheet" id="s8"><div class="pad">
+ <div class="tag">근거 · 규정과 공개 데이터</div>
+ <h2 class="head serif" style="margin-top:10px">발행을 멈추는 기준은 <span class="mark">법 조문과 원자료</span>에서 옵니다.</h2>
+ <div class="two" style="margin-top:24px;grid-template-columns:1.1fr 1fr">
+  <div><h3>지켜야 할 규정</h3><div id="laws" style="margin-top:6px"></div></div>
+  <div><h3>가져다 쓰는 공개 데이터와 오픈소스</h3><div id="oss" style="margin-top:6px"></div></div>
+ </div>
+ <div class="foot"><span id="lawnote">※ 조문 해석은 법률 자문을 대신하지 않는다. 조문은 법령 미러와 선관위 게시물로 확인했고 국가법령정보센터 원문 대조가 남아 있다.</span><span>08</span></div>
+</div></section>
+
+<!-- 9 국회 맥락 -->
+<section class="sheet" id="s9"><div class="pad">
+ <div class="tag">맥락 · 2026년 11월 국회</div>
+ <h2 class="head serif" style="margin-top:10px">지금 국회는 <span class="mark">예산 심사</span> 한가운데 있습니다.</h2>
+ <p style="margin-top:8px;color:var(--mute);font-size:14px" id="natlead"></p>
+ <div class="two" style="margin-top:18px;grid-template-columns:1fr 1.15fr">
+  <div><h3>2026년 국정조사</h3><div id="natjo" style="margin-top:6px"></div><h3 style="margin-top:18px">2027년도 예산안 일정</h3><div id="natbud" style="margin-top:6px"></div></div>
+  <div><h3>국정감사 쟁점, 여야 주장을 같은 분량으로</h3><div id="natgam" style="margin-top:6px"></div></div>
+ </div>
+ <div class="foot"><span>※ 의석수는 국회 공식 페이지, 나머지는 통신사와 일간지 보도로 확인했다. 의안정보시스템과 회의록 원문 대조는 하지 못했다.</span><span>09</span></div>
+</div></section>
+
+<!-- 10 서울시의회 게시물 점수판 -->
+<section class="sheet" id="s10"><div class="pad">
+ <div class="tag">콘텐츠 점수 · 서울특별시의회 보도자료 게시판</div>
+ <h2 class="head serif" style="margin-top:10px">서울시의회 여야 보도자료도 <span class="mark">같은 질문</span>으로 봤습니다.</h2>
+ <p style="margin-top:10px;max-width:980px;color:var(--mute);font-size:14px" id="postlead2"></p>
+ <div style="display:grid;grid-template-columns:270px 1fr;gap:40px;margin-top:18px">
+  <div id="sidesum2"></div>
+  <div id="posts2" style="max-height:590px;overflow:hidden"></div>
+ </div>
+ <div class="foot"><span>※ 모델 판정이며 사람이 검증한 값이 아니다. 의원 보도자료는 게시판에 올라온 제목과 요약 줄만 보냈고 첨부 전문은 보지 않았다. 표본이 작아 정당 전체의 경향으로 읽을 수 없다.</span><span>10</span></div>
+</div></section>
+
+<!-- 11 쉬운 콘텐츠와 다음 전략 -->
+<section class="sheet" id="s11"><div class="pad">
+ <div class="tag">전략 · 쉬운 말과 다음에 낼 것</div>
+ <h2 class="head serif" style="margin-top:10px">게시판 보도자료는 <span class="mark">수십 회</span>, 같은 기관의 영상은 <span class="mark">만 회</span> 읽힙니다.</h2>
+ <div style="display:grid;grid-template-columns:1fr 1fr 0.9fr;gap:30px;margin-top:22px">
+  <div><h3>같은 원자료, 쉬운 말로 다시</h3><div id="easy" style="margin-top:8px"></div></div>
+  <div><h3>실제 게시물에서 본 것</h3><div id="obs" style="margin-top:8px"></div></div>
+  <div><h3>다음 3주에 낼 것</h3><div id="next" style="margin-top:8px"></div></div>
+ </div>
+ <div class="foot"><span>※ 조회수는 2026년 11월 14일에 보인 값이고 게시 뒤 지난 시간이 글마다 다르다. 표본이 작아 경향으로만 읽는다.</span><span>11</span></div>
+</div></section>
+
+<script src="data.js"></script>
+<script src="live.js"></script>
+<script>
+const D = window.AIDE || {};
+const esc = s => String(s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const pct = v => v == null ? '답 없음' : Math.round(v * 100) + '%';
+function verdict(s){ if(!s) return ['rv','사람 검토']; if(s.match && s.match.value==='no') return ['rv','사람 검토']; if(s.attack>0.4||s.appeal>0.4||(s.clean&&s.clean.value==='no')) return ['no','발행 보류']; if([s.clean,s.evidence,s.match].some(x=>x&&x.value==null)) return ['rv','사람 검토']; return ['ok','발행 가능']; }
+// 2 오늘
+document.getElementById('agenda').innerHTML = (D.agenda || []).slice(0, 5).map(a => `<div class="box" style="margin-bottom:10px;padding:12px 16px"><div style="display:flex;justify-content:space-between;gap:12px"><b style="font-size:14.5px">${esc(a.title)}</b><span class="tag" style="white-space:nowrap">${esc(a.kind)}</span></div><p style="font-size:13px;margin-top:4px">${esc(a.fact)}</p><p class="src">${esc(a.src)}</p></div>`).join('') || '<p class="note">소재를 불러오는 중이에요.</p>';
+document.getElementById('sched').innerHTML = '<ul class="plain">' + (D.sched || []).slice(0, 6).map(s => `<li><b>${esc(s.when)}</b> ${esc(s.what)}</li>`).join('') + '</ul>';
+document.getElementById('pending').innerHTML = (D.samples || []).map(x => { const [c, t] = verdict(x.score); return `<li><span class="badge ${c}">${t}</span> ${esc(x.short || x.label)}</li>`; }).join('') || '<li class="note">기다리는 일이 없어요.</li>';
+const K = D.desk;
+if (K) document.getElementById('desk').innerHTML = `<div><div class="tag">원자료</div><div class="box" style="margin-top:8px;font-size:13.5px"><b>${esc(K.srcTitle)}</b><br><br>${K.srcHtml}</div><p class="src" style="margin-top:6px">${esc(K.srcUrl)}</p><div class="tag" style="margin-top:18px">문체 프로필</div><ul class="plain" style="margin-top:4px">${(K.style||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="note" style="margin-top:10px">문체 프로필은 형식만 배워요. 정당 어휘는 저장하지 않아요.</p></div>
+<div><div style="display:flex;gap:18px;border-bottom:1px solid var(--line);font-size:13.5px;padding-bottom:8px"><b style="border-bottom:3px solid var(--accent);padding-bottom:8px;margin-bottom:-9px">SNS 글</b><span>보도자료</span><span>카드뉴스</span><span>쇼츠 대본</span><span>문자</span><span>뉴스레터</span></div><div class="box" style="margin-top:14px;font-size:15px;line-height:1.75">${K.postHtml}</div><p class="note" style="margin-top:8px">${esc(K.postNote)}</p><div class="tag" style="margin-top:20px">의정보고 문자 · ${[...K.sms].length}자</div><div class="box" style="margin-top:8px;font-size:13.5px">${esc(K.sms)}</div><div class="tag" style="margin-top:20px">사람이 확인할 사실</div><ul class="plain">${K.checks.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="note" style="margin-top:10px">초안은 도구가 원자료에서 만든 글이에요. 의원실이 낸 글이 아니에요.</p></div>
+<div><div class="tag">카드뉴스 · 4:5</div><div style="display:flex;gap:10px;margin-top:8px">${K.cards.map((c,i)=>`<div class="card" style="background-image:url(assets/card-bg-${i+1}.png)"><em>${i+1}</em><b>${c[0]}</b><span>${esc(c[1])}</span></div>`).join('')}</div><div class="tag" style="margin-top:18px">쇼츠 대본 30초 · 9:16</div><div style="display:flex;gap:12px;margin-top:8px"><div style="width:104px;height:185px;background:url(assets/shorts-frame.png) center/cover;border:1px solid var(--line);flex:none;position:relative"><i style="position:absolute;left:0;right:0;bottom:0;background:var(--ink);color:#fff;font:600 10px/1.35 Pretendard;padding:5px 6px;font-style:normal">${esc(K.shortsCap)}</i></div><ul class="plain" style="flex:1">${K.shorts.map(x=>`<li><b>${esc(x[0])}</b> ${esc(x[1])}</li>`).join('')}</ul></div><p class="note" style="margin-top:10px">배경 그림은 생성 이미지예요. 발행 전에 AI로 만들었다는 표시를 붙여요.</p></div>`;
+document.getElementById('cal').innerHTML = (D.cal || []).map(d => `<div><b>${esc(d.day)}</b>${(d.items||[]).map(i=>`<span class="${i[0]==='w'?'w':''}">${esc(i[1])}</span>`).join('')}</div>`).join('');
+// 4 판정
+const QL = [['tone','말투'],['attack','공격 수위'],['appeal','지지나 심판 호소'],['clean','비난과 모욕 없음'],['evidence','확인할 근거 제시'],['match','수치와 일정이 원자료와 일치']];
+document.getElementById('verdict').innerHTML = (D.samples || []).map(x => { const s = x.score, [c, t] = verdict(s);
+ const rows = QL.filter(([k]) => s[k] != null).map(([k, l]) => { let v = s[k], txt, bar = '';
+  if (k === 'tone') { txt = `<b>${esc(v.value)}</b>`; bar = pct(v.dist[v.value]); }
+  else if (k === 'attack' || k === 'appeal') { txt = `<div class="bar ${v>0.4?'':'v'}"><i style="width:${Math.round(v*100)}%"></i></div>`; bar = (v*10).toFixed(1) + ' / 10'; }
+  else { txt = v.value == null ? '<b style="color:var(--amber)">답하지 않음</b>' : `<b>${v.value === 'yes' ? '예' : '아니오'}</b>`; bar = v.value == null ? '' : pct(v.p); }
+  return `<div class="q"><span>${l}</span><span>${txt}</span><span style="text-align:right;color:var(--mute)">${bar}</span></div>`; }).join('');
+ return `<div><div style="display:flex;justify-content:space-between;align-items:center"><div class="tag">${esc(x.label)}</div><span class="badge ${c}">${t}</span></div><div class="box" style="margin-top:8px;font-size:13px;line-height:1.65;height:232px;overflow:hidden">${x.html}</div><div class="box" style="margin-top:12px;padding:8px 20px">${rows}</div><p class="note" style="margin-top:6px">질문 여섯 개 응답 시간 합계 ${Math.round(s.ms)}ms</p><p class="src">${esc(x.url||"")}</p>${x.note?`<p class="note" style="margin-top:4px;color:var(--amber)">${esc(x.note)}</p>`:""}</div>`; }).join('');
+// 5 점수판
+function board(P, SC, lead, sfx, rows) { const S = Object.fromEntries((SC || []).map(s => [s.id, s]));
+document.getElementById('postlead' + sfx).textContent = lead || '';
+const sides = {};
+P.forEach(p => { const s = S[p.id]; if (!s) return; (sides[p.side] = sides[p.side] || []).push(s); });
+const ORDER = ['여당','제1야당','그 밖의 원내 정당','민주당 쪽','국민의힘 쪽','서울시','서울시의회'];
+document.getElementById('sidesum' + sfx).innerHTML = Object.entries(sides).sort((x,y)=>ORDER.indexOf(x[0])-ORDER.indexOf(y[0])).map(([k, arr]) => { const at = arr.filter(s => s.attack != null); const avg = at.reduce((a, s) => a + s.attack, 0) / (at.length || 1); const ev = arr.filter(s => s.evidence && s.evidence.value === 'yes').length; const tones = {}; arr.forEach(s => { const t = s.tone.value || '답 없음'; tones[t] = (tones[t] || 0) + 1; });
+ const na = arr.filter(s => s.attack == null || !s.tone.value).length;
+ return `<div style="border-top:1.5px solid var(--ink);padding:10px 0 12px"><div class="tag">${esc(k)} · ${arr.length}건</div>${['사실 전달','정책 요구','상대 비난','지지 호소'].map(t=>`<div class="kv" style="margin-top:5px;grid-template-columns:78px 1fr 34px"><span>${t}</span><div class="bar"><i style="width:${Math.round((tones[t]||0)/arr.length*100)}%"></i></div><span style="text-align:right">${tones[t]||0}건</span></div>`).join('')}<p class="note" style="margin-top:6px">근거 제시 ${ev}건 · 모델이 답하지 않은 항목이 있는 글 ${na}건</p></div>`; }).join('') || '<p class="note">게시물을 불러오는 중이에요.</p>';
+document.getElementById('posts' + sfx).innerHTML = '<table><tr><th style="width:150px">정당 · 채널</th><th>제목과 발췌 원문</th><th style="width:80px">말투</th><th style="width:96px">공격 수위</th><th style="width:56px">근거</th></tr>' + P.filter(p => S[p.id]).slice(0, rows || 8).map(p => { const s = S[p.id]; const txt = (p.title || '') + (p.excerpt ? ' / ' + p.excerpt : ''); return `<tr><td><b>${esc(p.party)}</b><br><span class="note">${esc(p.channel)} · ${esc(p.date)}</span></td><td style="font-size:12px;line-height:1.45">${esc(txt.length > 118 ? txt.slice(0, 118) + '…' : txt)}</td><td>${esc(s.tone.value || '답 없음')}</td><td>${s.attack == null ? '<span class="note">답 없음</span>' : `<div class="bar" style="margin-top:8px"><i style="width:${Math.round(s.attack*100)}%"></i></div><span class="note">${(s.attack*10).toFixed(1)}</span>`}</td><td>${s.evidence && s.evidence.value === 'yes' ? '있음' : s.evidence && s.evidence.value === 'no' ? '없음' : '·'}</td></tr>`; }).join('') + '</table>';
+}
+board(D.posts || [], D.scores, D.postlead, '', D.postrows);
+board(D.sposts || [], D.sscores, D.spostlead, '2', D.postrows);
+// 7, 8
+document.getElementById('market').textContent = D.market || '';
+document.getElementById('market2').textContent = D.market2 || '';
+document.getElementById('seoulwhy').textContent = D.seoulwhy || '';
+document.getElementById('laws').innerHTML = '<table><tr><th style="width:150px">규정</th><th>내용</th><th style="width:150px">제품이 하는 일</th></tr>' + (D.laws || []).map(l => `<tr><td><b>${esc(l.name)}</b></td><td>${esc(l.body)}</td><td>${esc(l.act)}</td></tr>`).join('') + '</table>';
+document.getElementById('oss').innerHTML = '<table><tr><th style="width:170px">이름</th><th>쓰는 자리</th><th style="width:90px">라이선스</th></tr>' + (D.oss || []).map(o => `<tr><td><b>${esc(o.name)}</b></td><td>${esc(o.use)}</td><td>${esc(o.lic)}</td></tr>`).join('') + '</table>';
+const N = D.nat || {};
+document.getElementById('natlead').textContent = N.lead || '';
+document.getElementById('natjo').innerHTML = '<table><tr><th>특위</th><th style="width:150px">기간</th><th>결과</th></tr>' + (N.jo || []).map(r => `<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join('') + '</table>';
+document.getElementById('natbud').innerHTML = '<table>' + (N.bud || []).map(r => `<tr><td style="width:120px"><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td></tr>`).join('') + '</table>';
+document.getElementById('natgam').innerHTML = '<table><tr><th style="width:150px">쟁점</th><th>여당 주장</th><th>야당 주장</th></tr>' + (N.gam || []).map(r => `<tr><td><b>${esc(r[0])}</b><br><span class="note">${esc(r[1])}</span></td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join('') + '</table>';
+const E = D.easy;
+if (E) {
+ document.getElementById('easy').innerHTML = E.drafts.map(d => `<div class="box" style="margin-bottom:10px;padding:14px 16px"><div style="display:flex;justify-content:space-between"><b>${esc(d.label)}</b><span class="note">${d.m.chars}자 · 문장 평균 ${d.m.avgLen}자 · 숫자 ${d.m.numbers}개</span></div><p style="font-size:12.5px;line-height:1.6;margin-top:6px">${esc(d.text)}</p></div>`).join('') + '<p class="note">문장 길이와 숫자 개수처럼 셀 수 있는 값으로 봐요. Bivia에 읽기 쉬운 정도를 물었더니 두 초안을 가르지 못해서 이 점수는 쓰지 않아요.</p>';
+ const tb = (title, arr, unit) => '<div class="tag" style="margin-top:12px">' + title + '</div><table>' + arr.map(r => `<tr><td>${esc(r.k)} <span class="note">${r.n}건</span></td><td style="text-align:right;width:120px"><b>${Math.round(r.views).toLocaleString()}${unit}</b></td></tr>`).join('') + '</table>';
+ document.getElementById('obs').innerHTML = tb('서울시의회 보도자료 게시판 · 평균 조회', E.byChannel, '회') + tb('제목의 숫자 · 평균 조회', E.byNum, '회') + tb('정당 공식 유튜브 · 평균 조회', E.yt, '회') + tb('서울시 공식 유튜브 영상 2건', E.seoulYt, '회');
+ document.getElementById('next').innerHTML = '<table>' + E.next.map(r => `<tr><td style="width:92px"><b>${esc(r[0])}</b></td><td><b>${esc(r[1])}</b><br><span style="font-size:12.5px">${esc(r[2])}</span></td></tr>`).join('') + '</table><p class="note" style="margin-top:10px">일정은 서울시의회 의사일정(안)이에요. 형식 제안은 왼쪽 관찰에서 나왔어요.</p>';
+}
+// 한 장만 보기: ?only=3
+const only = new URLSearchParams(location.search).get('only');
+if (only) { document.body.classList.add('only'); document.getElementById('s' + only)?.classList.add('on'); }
+</script>
+</body>
+</html>
