@@ -1,0 +1,765 @@
+[
+ {
+  "id": "D01",
+  "tone": {
+   "value": "상대 비난",
+   "dist": {
+    "사실 전달": 0,
+    "정책 요구": 0,
+    "상대 비난": 1,
+    "지지 호소": 0
+   }
+  },
+  "attack": 0.472,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.98
+  },
+  "appeal": 0.464,
+  "match": null,
+  "ms": 3435.1
+ },
+ {
+  "id": "D02",
+  "tone": {
+   "value": "상대 비난",
+   "dist": {
+    "사실 전달": 0,
+    "정책 요구": 0,
+    "상대 비난": 0.999,
+    "지지 호소": 0
+   }
+  },
+  "attack": 0.45,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.997
+  },
+  "appeal": null,
+  "match": null,
+  "ms": 2787.7999999999997
+ },
+ {
+  "id": "D03",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.746,
+    "정책 요구": 0.011,
+    "상대 비난": 0.001,
+    "지지 호소": 0.242
+   }
+  },
+  "attack": 0.003,
+  "evidence": {
+   "value": "yes",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 1
+  },
+  "appeal": null,
+  "match": null,
+  "ms": 1780.1
+ },
+ {
+  "id": "D04",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.892,
+    "정책 요구": 0.05,
+    "상대 비난": 0.044,
+    "지지 호소": 0.013
+   }
+  },
+  "attack": 0.031,
+  "evidence": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "appeal": 0.99,
+  "match": null,
+  "ms": 2395.9
+ },
+ {
+  "id": "D05",
+  "tone": {
+   "value": "상대 비난",
+   "dist": {
+    "사실 전달": 0,
+    "정책 요구": 0,
+    "상대 비난": 0.998,
+    "지지 호소": 0.002
+   }
+  },
+  "attack": 0.468,
+  "evidence": {
+   "value": "no",
+   "p": 0.947
+  },
+  "clean": {
+   "value": "no",
+   "p": 0.953
+  },
+  "appeal": 0.478,
+  "match": null,
+  "ms": 2336.4
+ },
+ {
+  "id": "D06",
+  "tone": {
+   "value": "지지 호소",
+   "dist": {
+    "사실 전달": 0.316,
+    "정책 요구": 0.008,
+    "상대 비난": 0.007,
+    "지지 호소": 0.668
+   }
+  },
+  "attack": 0.013,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "appeal": 0.495,
+  "match": null,
+  "ms": 2765
+ },
+ {
+  "id": "D07",
+  "tone": {
+   "value": null,
+   "status": "abstained"
+  },
+  "attack": 0.001,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 1
+  },
+  "appeal": 0.492,
+  "match": null,
+  "ms": 6983.2
+ },
+ {
+  "id": "D08",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.97,
+    "정책 요구": 0.018,
+    "상대 비난": 0.001,
+    "지지 호소": 0.011
+   }
+  },
+  "attack": 0.01,
+  "evidence": {
+   "value": "yes",
+   "p": 0.867
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.998
+  },
+  "appeal": 0.443,
+  "match": null,
+  "ms": 3868.7000000000003
+ },
+ {
+  "id": "D09",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.601,
+    "정책 요구": 0.026,
+    "상대 비난": 0.152,
+    "지지 호소": 0.221
+   }
+  },
+  "attack": null,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.997
+  },
+  "appeal": 0.464,
+  "match": null,
+  "ms": 4097.6
+ },
+ {
+  "id": "D10",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.869,
+    "정책 요구": 0.081,
+    "상대 비난": 0.001,
+    "지지 호소": 0.049
+   }
+  },
+  "attack": 0,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 1
+  },
+  "appeal": null,
+  "match": null,
+  "ms": 1373.9
+ },
+ {
+  "id": "D11",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.999,
+    "정책 요구": 0,
+    "상대 비난": 0,
+    "지지 호소": 0.001
+   }
+  },
+  "attack": 0.002,
+  "evidence": {
+   "value": "yes",
+   "p": 0.982
+  },
+  "clean": {
+   "value": "yes",
+   "p": 1
+  },
+  "appeal": null,
+  "match": null,
+  "ms": 514
+ },
+ {
+  "id": "D12",
+  "tone": {
+   "value": "지지 호소",
+   "dist": {
+    "사실 전달": 0,
+    "정책 요구": 0.001,
+    "상대 비난": 0,
+    "지지 호소": 0.999
+   }
+  },
+  "attack": 0.002,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 1
+  },
+  "appeal": 0.488,
+  "match": null,
+  "ms": 2642.5
+ },
+ {
+  "id": "P01",
+  "tone": {
+   "value": "상대 비난",
+   "dist": {
+    "사실 전달": 0,
+    "정책 요구": 0,
+    "상대 비난": 1,
+    "지지 호소": 0
+   }
+  },
+  "attack": 0.667,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "no",
+   "p": 0.986
+  },
+  "appeal": 0.464,
+  "match": null,
+  "ms": 1744.8
+ },
+ {
+  "id": "P02",
+  "tone": {
+   "value": "상대 비난",
+   "dist": {
+    "사실 전달": 0,
+    "정책 요구": 0,
+    "상대 비난": 0.999,
+    "지지 호소": 0
+   }
+  },
+  "attack": 0.014,
+  "evidence": {
+   "value": "yes",
+   "p": 0.993
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.995
+  },
+  "appeal": 0.119,
+  "match": null,
+  "ms": 2946
+ },
+ {
+  "id": "P03",
+  "tone": {
+   "value": "상대 비난",
+   "dist": {
+    "사실 전달": 0.001,
+    "정책 요구": 0,
+    "상대 비난": 0.999,
+    "지지 호소": 0
+   }
+  },
+  "attack": 0.754,
+  "evidence": {
+   "value": "yes",
+   "p": 0.995
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.622
+  },
+  "appeal": 0.673,
+  "match": null,
+  "ms": 733.8
+ },
+ {
+  "id": "P04",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.89,
+    "정책 요구": 0.002,
+    "상대 비난": 0.106,
+    "지지 호소": 0.002
+   }
+  },
+  "attack": null,
+  "evidence": {
+   "value": "no",
+   "p": 0.999
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.967
+  },
+  "appeal": 0.345,
+  "match": null,
+  "ms": 932.8
+ },
+ {
+  "id": "P05",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.894,
+    "정책 요구": 0.094,
+    "상대 비난": 0.01,
+    "지지 호소": 0.002
+   }
+  },
+  "attack": 0.006,
+  "evidence": {
+   "value": "yes",
+   "p": 0.706
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "appeal": null,
+  "match": null,
+  "ms": 458.5
+ },
+ {
+  "id": "P06",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 1,
+    "정책 요구": 0,
+    "상대 비난": 0,
+    "지지 호소": 0
+   }
+  },
+  "attack": null,
+  "evidence": {
+   "value": "yes",
+   "p": 0.99
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "appeal": 0.403,
+  "match": null,
+  "ms": 654.4
+ },
+ {
+  "id": "P07",
+  "tone": {
+   "value": "상대 비난",
+   "dist": {
+    "사실 전달": 0.004,
+    "정책 요구": 0.002,
+    "상대 비난": 0.919,
+    "지지 호소": 0.075
+   }
+  },
+  "attack": 0.799,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "no",
+   "p": 0.988
+  },
+  "appeal": 0.935,
+  "match": null,
+  "ms": 10412.7
+ },
+ {
+  "id": "P08",
+  "tone": {
+   "value": "상대 비난",
+   "dist": {
+    "사실 전달": 0,
+    "정책 요구": 0,
+    "상대 비난": 1,
+    "지지 호소": 0
+   }
+  },
+  "attack": 0.7,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "no",
+   "p": 1
+  },
+  "appeal": 0.001,
+  "match": null,
+  "ms": 12867.8
+ },
+ {
+  "id": "P09",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.967,
+    "정책 요구": 0.004,
+    "상대 비난": 0.003,
+    "지지 호소": 0.026
+   }
+  },
+  "attack": 0.006,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.998
+  },
+  "appeal": 0.007,
+  "match": null,
+  "ms": 4781.5
+ },
+ {
+  "id": "P10",
+  "tone": {
+   "value": "상대 비난",
+   "dist": {
+    "사실 전달": 0.016,
+    "정책 요구": 0.026,
+    "상대 비난": 0.765,
+    "지지 호소": 0.193
+   }
+  },
+  "attack": null,
+  "evidence": {
+   "value": "no",
+   "p": 0.755
+  },
+  "clean": {
+   "value": "no",
+   "p": 1
+  },
+  "appeal": null,
+  "match": null,
+  "ms": 6028
+ },
+ {
+  "id": "P11",
+  "tone": {
+   "value": "지지 호소",
+   "dist": {
+    "사실 전달": 0.24,
+    "정책 요구": 0.008,
+    "상대 비난": 0.014,
+    "지지 호소": 0.739
+   }
+  },
+  "attack": null,
+  "evidence": {
+   "value": "yes",
+   "p": 0.958
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "appeal": 0,
+  "match": null,
+  "ms": 2327.3
+ },
+ {
+  "id": "P12",
+  "tone": {
+   "value": "지지 호소",
+   "dist": {
+    "사실 전달": 0.13,
+    "정책 요구": 0.018,
+    "상대 비난": 0.001,
+    "지지 호소": 0.85
+   }
+  },
+  "attack": 0.001,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "appeal": 0.492,
+  "match": null,
+  "ms": 3106.8
+ },
+ {
+  "id": "O01",
+  "tone": {
+   "value": "상대 비난",
+   "dist": {
+    "사실 전달": 0,
+    "정책 요구": 0,
+    "상대 비난": 0.999,
+    "지지 호소": 0
+   }
+  },
+  "attack": 0.702,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.974
+  },
+  "appeal": 0.409,
+  "match": null,
+  "ms": 1655.5
+ },
+ {
+  "id": "O02",
+  "tone": {
+   "value": "지지 호소",
+   "dist": {
+    "사실 전달": 0.001,
+    "정책 요구": 0.376,
+    "상대 비난": 0.003,
+    "지지 호소": 0.62
+   }
+  },
+  "attack": 0.078,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.998
+  },
+  "appeal": 0.672,
+  "match": null,
+  "ms": 3402
+ },
+ {
+  "id": "O03",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.971,
+    "정책 요구": 0.004,
+    "상대 비난": 0.023,
+    "지지 호소": 0.003
+   }
+  },
+  "attack": null,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "appeal": 0.391,
+  "match": null,
+  "ms": 4558.9
+ },
+ {
+  "id": "O04",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.996,
+    "정책 요구": 0.003,
+    "상대 비난": 0.001,
+    "지지 호소": 0
+   }
+  },
+  "attack": 0.003,
+  "evidence": {
+   "value": "no",
+   "p": 1
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "appeal": null,
+  "match": null,
+  "ms": 1506.1
+ },
+ {
+  "id": "O05",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.694,
+    "정책 요구": 0.094,
+    "상대 비난": 0.013,
+    "지지 호소": 0.199
+   }
+  },
+  "attack": 0.003,
+  "evidence": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "appeal": null,
+  "match": null,
+  "ms": 1421.9
+ },
+ {
+  "id": "O06",
+  "tone": {
+   "value": "정책 요구",
+   "dist": {
+    "사실 전달": 0.02,
+    "정책 요구": 0.978,
+    "상대 비난": 0.001,
+    "지지 호소": 0
+   }
+  },
+  "attack": 0.08,
+  "evidence": {
+   "value": "no",
+   "p": 0.963
+  },
+  "clean": {
+   "value": "yes",
+   "p": 0.999
+  },
+  "appeal": null,
+  "match": null,
+  "ms": 464.1
+ },
+ {
+  "id": "O07",
+  "tone": {
+   "value": "정책 요구",
+   "dist": {
+    "사실 전달": 0.025,
+    "정책 요구": 0.943,
+    "상대 비난": 0.006,
+    "지지 호소": 0.025
+   }
+  },
+  "attack": 0.007,
+  "evidence": {
+   "value": "yes",
+   "p": 0.932
+  },
+  "clean": {
+   "value": "yes",
+   "p": 1
+  },
+  "appeal": 0.017,
+  "match": null,
+  "ms": 384.4
+ },
+ {
+  "id": "O08",
+  "tone": {
+   "value": "사실 전달",
+   "dist": {
+    "사실 전달": 0.999,
+    "정책 요구": 0,
+    "상대 비난": 0,
+    "지지 호소": 0
+   }
+  },
+  "attack": 0.001,
+  "evidence": {
+   "value": "yes",
+   "p": 0.995
+  },
+  "clean": {
+   "value": "yes",
+   "p": 1
+  },
+  "appeal": 0.003,
+  "match": null,
+  "ms": 319.3
+ }
+]

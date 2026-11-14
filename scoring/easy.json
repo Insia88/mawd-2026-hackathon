@@ -1,0 +1,276 @@
+{
+ "drafts": [
+  {
+   "id": "draft",
+   "label": "처음 초안",
+   "text": "2025년 서울에서 어린이 교통사고는 1,190건, 이 가운데 어린이보호구역 안에서 144건이 났습니다. 7월 27일 교육위원회에서 이희원 위원이 통학로에 인도가 끊긴 곳이 몇 군데인지 묻자, 서울시교육청 안전총괄담당관은 \"정확한 숫자는 저희가 파악을 못 했는데요\"라고 답했습니다. 교육청은 올해 자치구별로 10곳씩 초등학교 250곳을 점검했다고 밝혔습니다. 8월 31일 김현우 위원은 중학교와 고등학교도 실태조사를 할 것인지 물었고, 교육청은 하반기에 학교 의견을 모아 자치구, 서울시와 개선하겠다고 답했습니다.",
+   "easy": 0.442,
+   "m": {
+    "chars": 287,
+    "sentences": 4,
+    "avgLen": 71,
+    "numbers": 9
+   }
+  },
+  {
+   "id": "easy",
+   "label": "쉬운 말 초안",
+   "text": "서울에서 작년 한 해 어린이 교통사고는 1,190건 났습니다. 그중 144건은 학교 앞 어린이보호구역 안에서 났습니다. 등하굣길에 인도가 끊긴 곳이 서울에 몇 군데인지는 교육청도 아직 세지 못했습니다. 7월 시의회에서 이 질문이 나오자 교육청은 \"정확한 숫자는 저희가 파악을 못 했는데요\"라고 답했습니다. 올해 점검한 곳은 초등학교 250곳입니다.",
+   "easy": 0.384,
+   "m": {
+    "chars": 194,
+    "sentences": 5,
+    "avgLen": 38,
+    "numbers": 4
+   }
+  }
+ ],
+ "easyAll": 0.38,
+ "byChannel": [
+  {
+   "k": "교섭단체 보도자료",
+   "n": 6,
+   "views": 80.83,
+   "easy": 0.39
+  },
+  {
+   "k": "교섭단체 논평",
+   "n": 6,
+   "views": 62.5,
+   "easy": 0.38
+  },
+  {
+   "k": "의원 보도자료",
+   "n": 8,
+   "views": 59,
+   "easy": 0.37
+  }
+ ],
+ "byNum": [
+  {
+   "k": "제목에 숫자 없음",
+   "n": 12,
+   "views": 80.5,
+   "easy": 0.4
+  },
+  {
+   "k": "제목에 숫자 있음",
+   "n": 8,
+   "views": 45.75,
+   "easy": 0.35
+  }
+ ],
+ "byLen": [
+  {
+   "k": "제목 51자 이상",
+   "n": 12,
+   "views": 65.25,
+   "easy": 0.39
+  },
+  {
+   "k": "제목 50자 이하",
+   "n": 8,
+   "views": 68.63,
+   "easy": 0.36
+  }
+ ],
+ "yt": [
+  {
+   "k": "쇼츠",
+   "n": 5,
+   "views": 5015
+  },
+  {
+   "k": "생중계",
+   "n": 2,
+   "views": 49440
+  },
+  {
+   "k": "기획 영상",
+   "n": 1,
+   "views": 9087
+  }
+ ],
+ "rows": [
+  {
+   "id": "S01",
+   "side": "민주당 쪽",
+   "channel": "교섭단체 보도자료",
+   "views": 126,
+   "easy": 0.382,
+   "titleLen": 62,
+   "hasNum": false
+  },
+  {
+   "id": "S02",
+   "side": "민주당 쪽",
+   "channel": "교섭단체 보도자료",
+   "views": 63,
+   "easy": 0.329,
+   "titleLen": 57,
+   "hasNum": false
+  },
+  {
+   "id": "S03",
+   "side": "민주당 쪽",
+   "channel": "교섭단체 논평",
+   "views": 56,
+   "easy": 0.301,
+   "titleLen": 31,
+   "hasNum": false
+  },
+  {
+   "id": "S04",
+   "side": "민주당 쪽",
+   "channel": "교섭단체 논평",
+   "views": 53,
+   "easy": 0.379,
+   "titleLen": 50,
+   "hasNum": true
+  },
+  {
+   "id": "S05",
+   "side": "민주당 쪽",
+   "channel": "교섭단체 논평",
+   "views": 83,
+   "easy": null,
+   "titleLen": 44,
+   "hasNum": false
+  },
+  {
+   "id": "S06",
+   "side": "민주당 쪽",
+   "channel": "교섭단체 보도자료",
+   "views": 57,
+   "easy": 0.417,
+   "titleLen": 34,
+   "hasNum": false
+  },
+  {
+   "id": "S07",
+   "side": "민주당 쪽",
+   "channel": "의원 보도자료",
+   "views": 72,
+   "easy": 0.353,
+   "titleLen": 65,
+   "hasNum": true
+  },
+  {
+   "id": "S08",
+   "side": "민주당 쪽",
+   "channel": "의원 보도자료",
+   "views": 79,
+   "easy": null,
+   "titleLen": 62,
+   "hasNum": true
+  },
+  {
+   "id": "S09",
+   "side": "민주당 쪽",
+   "channel": "의원 보도자료",
+   "views": 34,
+   "easy": 0.366,
+   "titleLen": 40,
+   "hasNum": true
+  },
+  {
+   "id": "S10",
+   "side": "민주당 쪽",
+   "channel": "의원 보도자료",
+   "views": 27,
+   "easy": 0.306,
+   "titleLen": 60,
+   "hasNum": true
+  },
+  {
+   "id": "S11",
+   "side": "국민의힘 쪽",
+   "channel": "교섭단체 보도자료",
+   "views": 102,
+   "easy": 0.406,
+   "titleLen": 50,
+   "hasNum": false
+  },
+  {
+   "id": "S12",
+   "side": "국민의힘 쪽",
+   "channel": "교섭단체 논평",
+   "views": 47,
+   "easy": 0.283,
+   "titleLen": 36,
+   "hasNum": true
+  },
+  {
+   "id": "S13",
+   "side": "국민의힘 쪽",
+   "channel": "교섭단체 논평",
+   "views": 93,
+   "easy": 0.492,
+   "titleLen": 52,
+   "hasNum": false
+  },
+  {
+   "id": "S14",
+   "side": "국민의힘 쪽",
+   "channel": "교섭단체 논평",
+   "views": 43,
+   "easy": 0.438,
+   "titleLen": 63,
+   "hasNum": false
+  },
+  {
+   "id": "S15",
+   "side": "국민의힘 쪽",
+   "channel": "교섭단체 보도자료",
+   "views": 98,
+   "easy": 0.438,
+   "titleLen": 67,
+   "hasNum": false
+  },
+  {
+   "id": "S16",
+   "side": "국민의힘 쪽",
+   "channel": "교섭단체 보도자료",
+   "views": 39,
+   "easy": null,
+   "titleLen": 59,
+   "hasNum": false
+  },
+  {
+   "id": "S17",
+   "side": "국민의힘 쪽",
+   "channel": "의원 보도자료",
+   "views": 28,
+   "easy": 0.406,
+   "titleLen": 62,
+   "hasNum": true
+  },
+  {
+   "id": "S18",
+   "side": "국민의힘 쪽",
+   "channel": "의원 보도자료",
+   "views": 89,
+   "easy": 0.431,
+   "titleLen": 54,
+   "hasNum": false
+  },
+  {
+   "id": "S19",
+   "side": "국민의힘 쪽",
+   "channel": "의원 보도자료",
+   "views": 117,
+   "easy": 0.353,
+   "titleLen": 50,
+   "hasNum": false
+  },
+  {
+   "id": "S20",
+   "side": "국민의힘 쪽",
+   "channel": "의원 보도자료",
+   "views": 26,
+   "easy": 0.373,
+   "titleLen": 54,
+   "hasNum": true
+  }
+ ]
+}
